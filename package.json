@@ -1,0 +1,20 @@
+{
+  "name": "never",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Never.ts",
+  "scripts": {
+    "dev": "nodemon ./src/Never.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.2",
+    "eslint": "^8.23.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.3.0"
+  }
+}
