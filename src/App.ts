@@ -3,7 +3,7 @@ import "dotenv/config";
 import Commands from "./Commands";
 import Events from "./Events";
 
-class Never {
+class App {
   client: Client;
 
   constructor() {
@@ -24,6 +24,6 @@ class Never {
   }
 }
 
-export const client = new Never().client;
+export const client = new App().client;
 new Commands();
 new Events();

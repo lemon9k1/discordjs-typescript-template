@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Commands from "../src/Commands";
-import { client } from "../src/Never";
+import { client } from "../src/App";
 
 export default class InteractionCreate extends Commands {
   name: string;
@@ -24,7 +24,7 @@ export default class InteractionCreate extends Commands {
       const { commandName } = interaction;
 
       for (const command of this.commands) {
-        if (command.name === commandName) command.execute();
+        if (command.name === commandName) command.execute(interaction);
       }
     });
   }

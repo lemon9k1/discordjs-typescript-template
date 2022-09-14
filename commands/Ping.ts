@@ -7,7 +7,7 @@ export default class Ping {
     this.desc = "Pong!";
   }
 
-  execute(): void {
-    console.log('Working!');
+  async execute(interaction: any): Promise<void> {
+    await interaction.reply("Pong!");
   }
 }

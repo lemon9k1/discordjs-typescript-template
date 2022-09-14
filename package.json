@@ -5,7 +5,7 @@
   "description": "",
   "main": "Never.ts",
   "scripts": {
-    "dev": "nodemon ./src/Never.ts"
+    "dev": "nodemon ./src/App.ts"
   },
   "keywords": [],
   "author": "",
