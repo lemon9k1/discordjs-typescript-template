@@ -35,10 +35,10 @@ export default class App extends Client {
     });
 
     this.eventFiles = fs
-      .readdirSync(path.resolve("./events"))
+      .readdirSync(path.resolve("./src/events"))
       .filter((file) => file.endsWith(".ts"));
     this.commandFiles = fs
-      .readdirSync(path.resolve("./commands"))
+      .readdirSync(path.resolve("./src/commands"))
       .filter((file) => file.endsWith(".ts"));
     this.events = new Collection();
     this.commands = new Collection();
@@ -52,7 +52,7 @@ export default class App extends Client {
 
   async eventHandler(): Promise<void> {
     for (const file of this.eventFiles) {
-      const importedFile = await import(path.resolve(`./events/${file}`));
+      const importedFile = await import(path.resolve(`./src/events/${file}`));
       const event = new importedFile.default();
 
       this.events.set(event.name, event);
@@ -61,7 +61,7 @@ export default class App extends Client {
 
   async commandHandler(): Promise<void> {
     for (const file of this.commandFiles) {
-      const importedFile = await import(path.resolve(`./commands/${file}`));
+      const importedFile = await import(path.resolve(`./src/commands/${file}`));
       const command: Command = new importedFile.default();
 
       this.commands.set(command.name, command);
