@@ -3,9 +3,10 @@
   "private": "true",
   "version": "1.0.0",
   "description": "",
-  "main": "Never.ts",
+  "main": "App.ts",
   "scripts": {
-    "dev": "nodemon ./src/App.ts"
+    "dev": "nodemon ./src/App.ts",
+    "build": "ts-node ./src/App.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,3 +1,5 @@
+import { CommandInteraction } from "discord.js";
+
 export default class Ping {
   name: string;
   desc: string;
@@ -7,7 +9,7 @@ export default class Ping {
     this.desc = "Pong!";
   }
 
-  async execute(interaction: any): Promise<void> {
+  async execute(interaction: CommandInteraction): Promise<void> {
     await interaction.reply("Pong!");
   }
 }

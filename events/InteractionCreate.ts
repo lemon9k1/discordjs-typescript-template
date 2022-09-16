@@ -1,31 +1,23 @@
-import fs from "fs";
-import path from "path";
-import Commands from "../src/Commands";
+import { CommandInteraction } from "discord.js";
 import { client } from "../src/App";
 
-export default class InteractionCreate extends Commands {
+export default class InteractionCreate {
   name: string;
-  commandNames: Array<string>;
 
   constructor() {
-    super();
-
     this.name = "interactionCreate";
-    this.commandNames = fs
-      .readdirSync(path.resolve("./commands"))
-      .filter((file) => file.endsWith(".ts"))
-      .map((file) => file.replace(".ts", "").toLowerCase());
+    this.execute();
   }
 
   execute(): void {
-    client.on(this.name, async (interaction) => {
+    client.on(this.name, (interaction: CommandInteraction) => {
       if (!interaction.isChatInputCommand()) return;
 
       const { commandName } = interaction;
 
-      for (const command of this.commands) {
+      client.commands.map((command) => {
         if (command.name === commandName) command.execute(interaction);
-      }
+      });
     });
   }
 }
