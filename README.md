@@ -1,4 +1,4 @@
-# discord-template-typescript
+# discordjs-template-typescript
 Always looking for constructive feedback of how to shorten or optimize the code - send me a DM.
 
 # Initial Setup
