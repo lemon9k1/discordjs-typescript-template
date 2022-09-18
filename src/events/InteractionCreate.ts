@@ -6,6 +6,7 @@ export default class InteractionCreate {
 
   constructor() {
     this.name = "interactionCreate";
+    
     this.execute();
   }
 

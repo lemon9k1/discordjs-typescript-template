@@ -1,4 +1,3 @@
-import { client } from "../App";
 import path from "path";
 import { Command, Commands } from "../interfaces/Handlers";
 import { SlashCommandBuilder } from "@discordjs/builders";

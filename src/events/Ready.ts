@@ -6,6 +6,7 @@ export default class Ready {
 
   constructor() {
     this.name = "ready";
+    
     this.execute();
   }
 

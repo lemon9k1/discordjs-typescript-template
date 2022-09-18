@@ -5,14 +5,20 @@ import {
   SlashCommandBuilder,
 } from "discord.js";
 
+export interface Event {
+  name: string;
+  execute: () => void;
+}
+
 export interface Command {
   name: string;
   desc: string;
   execute: (interaction: CommandInteraction) => Promise<void>;
 }
 
-export interface Event {
-  name: string;
+export interface Job {
+  jobRepeat: boolean;
+  jobMs: number;
   execute: () => void;
 }
 
@@ -25,4 +31,9 @@ export interface Commands extends Client {
   commandFiles: Array<string>;
   commands: Collection<string, Command>;
   slashCommands: Array<SlashCommandBuilder>;
+}
+
+export interface Jobs extends Client {
+  jobFiles: Array<string>;
+  jobs: Collection<string, Job>;
 }

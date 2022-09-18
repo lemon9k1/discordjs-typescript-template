@@ -16,3 +16,9 @@
     - In your favorite terminal type:
       - `npm run dev` for a dev environment using Nodemon.
       - `npm run build` for a live version of your Bot.
+
+# Automating Role Assignment
+
+- Step 1
+    - Go into your `.env` file and create an environment variable with a standard array of role IDs.
+    - Save and run the bot using `npm run dev` or `npm run build`.

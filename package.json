@@ -1,6 +1,7 @@
 {
-  "name": "discordjs-typescript-template",
-  "version": "1.0.0",
+  "name": "discord-template-typescript",
+  "private": "true",
+  "version": "1.0.1",
   "description": "",
   "main": "App.ts",
   "scripts": {
@@ -11,11 +12,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
     "dotenv": "^16.0.2",
     "eslint": "^8.23.0"
   },
   "dependencies": {
-    "discord.js": "^14.3.0",
-    "mysql2": "^2.3.3"
+    "discord.js": "^14.3.0"
   }
 }
