@@ -1,6 +1,5 @@
 {
   "name": "discord-template-typescript",
-  "private": "true",
   "version": "1.0.1",
   "description": "",
   "main": "App.ts",
