@@ -11,6 +11,12 @@
     - `CLIENT_ID=YOUR_BOTS_ID`
     - `GUILD_ID=YOUR_SERVER_ID`
   - **The bot will not authenticate without these environment variables.**
+  - It should look something like this:
+  ```
+  DISCORD_TOKEN=zfVtA68yalveO4t4U2tQeL1fzAp5nOsxHzcpQOea
+  CLIENT_ID=39123315515959548597
+  GUILD_ID=42412108868414007231
+  ```
   
  - Step 3
     - In your favorite terminal type:
