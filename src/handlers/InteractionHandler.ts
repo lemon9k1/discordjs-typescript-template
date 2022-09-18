@@ -7,8 +7,8 @@ import { Routes } from "discord.js";
 export default class InteractionHandler {
   constructor(client: App) {
     this.commandHandler(client);
-
     this.buttonHandler(client);
+    this.menuHandler(client);
   }
 
   async commandHandler(client: App): Promise<void> {
@@ -61,6 +61,17 @@ export default class InteractionHandler {
       const button = new importedFile.default();
 
       client.buttons.set(button.customId, button);
+    }
+  }
+
+  async menuHandler(client: App): Promise<void> {
+    for (const file of client.menuFiles) {
+      const importedFile = await import(
+        path.resolve(`./src/interactions/menus/${file}`)
+      );
+      const menu = new importedFile.default();
+
+      client.menus.set(menu.customId, menu);
     }
   }
 }

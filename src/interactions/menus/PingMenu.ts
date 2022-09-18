@@ -1,18 +1,16 @@
-import { CommandInteraction } from "discord.js";
+import { SelectMenuInteraction } from "discord.js";
 import PingOptions from "../../builders/PingOptions";
 
-export default class Ping {
-  name: string;
-  desc: string;
+export default class PingMenu {
+  customId: string;
   options: PingOptions;
 
   constructor() {
-    this.name = "ping";
-    this.desc = "Pong!";
+    this.customId = "pingMenu";
     this.options = new PingOptions();
   }
 
-  async execute(interaction: CommandInteraction): Promise<void> {
+  async execute(interaction: SelectMenuInteraction): Promise<void> {
     await interaction.reply({
       embeds: [this.options.buildEmbeds()],
       components: [this.options.buildMenus(), this.options.buildButtons()],

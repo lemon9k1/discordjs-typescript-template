@@ -3,6 +3,7 @@ import {
   Client,
   Collection,
   CommandInteraction,
+  SelectMenuInteraction,
   SlashCommandBuilder,
 } from "discord.js";
 
@@ -28,18 +29,7 @@ export interface Button {
   execute: (interaction: ButtonInteraction) => void;
 }
 
-export interface Events extends Client {
-  eventFiles: Array<string>;
-  events: Collection<string, Event>;
-}
-
-export interface Interactions {
-  commandFiles: Array<string>;
-  commands: Collection<string, Command>;
-  slashCommands: Array<SlashCommandBuilder>;
-}
-
-export interface Jobs extends Client {
-  jobFiles: Array<string>;
-  jobs: Collection<string, Job>;
+export interface Menu {
+  customId: string;
+  execute: (interaction: SelectMenuInteraction) => void;
 }
