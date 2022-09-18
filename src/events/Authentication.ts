@@ -1,7 +1,7 @@
 import { ClientUser } from "discord.js";
 import { client } from "../App";
 
-export default class Ready {
+export default class Authentication {
   name: string;
 
   constructor() {

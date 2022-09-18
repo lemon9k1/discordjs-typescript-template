@@ -1,12 +1,12 @@
 import path from "path";
-import { Jobs } from "../interfaces/Handlers";
+import App from "../App";
 
 export default class JobHandler {
-  constructor(client: Jobs) {
+  constructor(client: App) {
     this.jobHandler(client);
   }
 
-  async jobHandler(client: Jobs): Promise<void> {
+  async jobHandler(client: App): Promise<void> {
     for (const file of client.jobFiles) {
       const importedFile = await import(path.resolve(`./src/jobs/${file}`));
       const job = new importedFile.default();

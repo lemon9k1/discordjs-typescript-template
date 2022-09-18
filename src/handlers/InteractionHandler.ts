@@ -1,18 +1,22 @@
 import path from "path";
-import { Command, Commands } from "../interfaces/Handlers";
+import App from "../App";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord.js";
 
-export default class CommandHandler {
-  constructor(client: Commands) {
+export default class InteractionHandler {
+  constructor(client: App) {
     this.commandHandler(client);
+
+    this.buttonHandler(client);
   }
 
-  async commandHandler(client: Commands): Promise<void> {
+  async commandHandler(client: App): Promise<void> {
     for (const file of client.commandFiles) {
-      const importedFile = await import(path.resolve(`./src/commands/${file}`));
-      const command: Command = new importedFile.default();
+      const importedFile = await import(
+        path.resolve(`./src/interactions/commands/${file}`)
+      );
+      const command = new importedFile.default();
 
       client.commands.set(command.name, command);
     }
@@ -41,9 +45,22 @@ export default class CommandHandler {
       )
       .then((data: any) =>
         console.log(
-          `Successfully registered ${data.length} application commands.`
+          `Successfully registered ${data.length} application command${
+            data.length > 1 ? "s" : ""
+          }.`
         )
       )
       .catch(console.error);
+  }
+
+  async buttonHandler(client: App): Promise<void> {
+    for (const file of client.buttonFiles) {
+      const importedFile = await import(
+        path.resolve(`./src/interactions/buttons/${file}`)
+      );
+      const button = new importedFile.default();
+
+      client.buttons.set(button.customId, button);
+    }
   }
 }

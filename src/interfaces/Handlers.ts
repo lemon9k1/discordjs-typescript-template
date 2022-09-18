@@ -1,4 +1,5 @@
 import {
+  ButtonInteraction,
   Client,
   Collection,
   CommandInteraction,
@@ -22,12 +23,17 @@ export interface Job {
   execute: () => void;
 }
 
+export interface Button {
+  customId: string;
+  execute: (interaction: ButtonInteraction) => void;
+}
+
 export interface Events extends Client {
   eventFiles: Array<string>;
   events: Collection<string, Event>;
 }
 
-export interface Commands extends Client {
+export interface Interactions {
   commandFiles: Array<string>;
   commands: Collection<string, Command>;
   slashCommands: Array<SlashCommandBuilder>;

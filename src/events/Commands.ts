@@ -1,7 +1,7 @@
 import { CommandInteraction } from "discord.js";
 import { client } from "../App";
 
-export default class InteractionCreate {
+export default class Commands {
   name: string;
 
   constructor() {
