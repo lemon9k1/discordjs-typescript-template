@@ -4,7 +4,7 @@ export default class AutoAssignRoles {
   jobMs: number;
 
   constructor() {
-    this.jobMs = 10 * 1 * 1000;
+    this.jobMs = 60 * 1 * 1000;
 
     setInterval(async () => {
       await this.execute();
