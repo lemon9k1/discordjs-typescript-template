@@ -1,28 +1,28 @@
 import {
   ActionRowBuilder,
   ButtonBuilder,
-  ButtonInteraction,
   EmbedBuilder,
+  MessageComponentInteraction,
   SelectMenuBuilder,
 } from "discord.js";
 import PingOptions from "../../builders/PingOptions";
 
-export default class PingButton {
+export default class Modal {
   customId: string;
   options: PingOptions;
-  buttons: ActionRowBuilder<ButtonBuilder>;
-  menus: ActionRowBuilder<SelectMenuBuilder>;
   embeds: EmbedBuilder;
+  menus: ActionRowBuilder<SelectMenuBuilder>;
+  buttons: ActionRowBuilder<ButtonBuilder>;
 
   constructor() {
-    this.customId = "pingButton";
+    this.customId = "modal";
     this.options = new PingOptions();
+    this.embeds = this.options.buildEmbeds();
     this.menus = this.options.buildMenus();
     this.buttons = this.options.buildButtons();
-    this.embeds = this.options.buildEmbeds();
   }
 
-  async execute(interaction: ButtonInteraction): Promise<void> {
+  async execute(interaction: MessageComponentInteraction): Promise<void> {
     try {
       await interaction.reply({
         embeds: [this.embeds],

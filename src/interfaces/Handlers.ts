@@ -3,6 +3,7 @@ import {
   Client,
   Collection,
   CommandInteraction,
+  ModalSubmitInteraction,
   SelectMenuInteraction,
   SlashCommandBuilder,
 } from "discord.js";
@@ -32,4 +33,9 @@ export interface Button {
 export interface Menu {
   customId: string;
   execute: (interaction: SelectMenuInteraction) => void;
+}
+
+export interface Modal {
+  customId: string;
+  execute: (interaction: ModalSubmitInteraction) => void;
 }

@@ -3,29 +3,44 @@ import {
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder,
+  ModalActionRowComponentBuilder,
+  ModalBuilder,
   SelectMenuBuilder,
+  TextInputBuilder,
+  TextInputStyle,
 } from "discord.js";
 
 export default class PingOptions {
   buttonRow: ActionRowBuilder<ButtonBuilder>;
   menuRow: ActionRowBuilder<SelectMenuBuilder>;
+  firstActionRow: ActionRowBuilder<ModalActionRowComponentBuilder>;
 
   constructor() {
     this.buttonRow = new ActionRowBuilder();
     this.menuRow = new ActionRowBuilder();
+    this.firstActionRow = new ActionRowBuilder();
   }
 
   buildButtons() {
-    return this.buttonRow.addComponents(
+    this.buttonRow.addComponents(
       new ButtonBuilder()
         .setCustomId("pingButton")
         .setLabel("Ping Again!")
         .setStyle(ButtonStyle.Primary)
     );
+
+    this.buttonRow.addComponents(
+      new ButtonBuilder()
+        .setCustomId("modal")
+        .setLabel("Open Modal")
+        .setStyle(ButtonStyle.Secondary)
+    );
+
+    return this.buttonRow;
   }
 
   buildMenus() {
-    return this.menuRow.addComponents(
+    this.menuRow.addComponents(
       new SelectMenuBuilder()
         .setCustomId("pingMenu")
         .setPlaceholder("Nothing selected")
@@ -42,6 +57,8 @@ export default class PingOptions {
           }
         )
     );
+
+    return this.menuRow;
   }
 
   buildEmbeds() {
@@ -73,5 +90,20 @@ export default class PingOptions {
         text: "Some footer text here",
         iconURL: "https://i.imgur.com/AfFp7pu.png",
       });
+  }
+
+  buildModals() {
+    const modal = new ModalBuilder().setCustomId("modal").setTitle("Pong!");
+
+    const responseInput = new TextInputBuilder()
+      .setCustomId("modalTxt")
+      .setLabel("Ping?")
+      .setStyle(TextInputStyle.Paragraph);
+
+    this.firstActionRow.addComponents(responseInput);
+
+    modal.addComponents(this.firstActionRow);
+
+    return modal;
   }
 }

@@ -12,14 +12,9 @@ export default class Menus {
 
   execute(): void {
     client.on(this.name, (interaction: SelectMenuInteraction) => {
-      console.log('working');
       if (!interaction.isSelectMenu()) return;
 
-      console.log('working');
-
       const { customId } = interaction;
-
-      console.log(customId);
 
       client.menus.map((menu) => {
         if (menu.customId === customId) menu.execute(interaction);

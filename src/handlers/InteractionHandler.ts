@@ -9,6 +9,7 @@ export default class InteractionHandler {
     this.commandHandler(client);
     this.buttonHandler(client);
     this.menuHandler(client);
+    this.modalHandler(client);
   }
 
   async commandHandler(client: App): Promise<void> {
@@ -72,6 +73,17 @@ export default class InteractionHandler {
       const menu = new importedFile.default();
 
       client.menus.set(menu.customId, menu);
+    }
+  }
+
+  async modalHandler(client: App): Promise<void> {
+    for (const file of client.modalFiles) {
+      const importedFile = await import(
+        path.resolve(`./src/interactions/modals/${file}`)
+      );
+      const modal = new importedFile.default();
+
+      client.modals.set(modal.customId, modal);
     }
   }
 }

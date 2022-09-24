@@ -10,7 +10,14 @@ import fs from "fs";
 import EventHandler from "./handlers/EventHandler";
 import InteractionHandler from "./handlers/InteractionHandler";
 import JobHandler from "./handlers/JobHandler";
-import { Button, Command, Event, Job, Menu } from "./interfaces/Handlers";
+import {
+  Button,
+  Command,
+  Event,
+  Job,
+  Menu,
+  Modal,
+} from "./interfaces/Handlers";
 
 export default class App extends Client {
   eventFiles: Array<string>;
@@ -18,11 +25,13 @@ export default class App extends Client {
   jobFiles: Array<string>;
   buttonFiles: Array<string>;
   menuFiles: Array<string>;
+  modalFiles: Array<string>;
   events: Collection<string, Event>;
   commands: Collection<string, Command>;
   jobs: Collection<string, Job>;
   buttons: Collection<string, Button>;
   menus: Collection<string, Menu>;
+  modals: Collection<string, Modal>;
   slashCommands: Array<SlashCommandBuilder>;
 
   constructor() {
@@ -51,12 +60,16 @@ export default class App extends Client {
     this.menuFiles = fs
       .readdirSync(path.resolve("./src/interactions/menus"))
       .filter((file) => file.endsWith(".ts"));
+    this.modalFiles = fs
+      .readdirSync(path.resolve("./src/interactions/modals"))
+      .filter((file) => file.endsWith(".ts"));
 
     this.events = new Collection();
     this.commands = new Collection();
     this.jobs = new Collection();
     this.buttons = new Collection();
     this.menus = new Collection();
+    this.modals = new Collection();
     this.slashCommands = [];
 
     new EventHandler(this);
